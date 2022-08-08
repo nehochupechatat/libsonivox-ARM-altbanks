@@ -18,8 +18,8 @@ AR = C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-e
 %.o: %.s
 	$(AS) -o $@ -EL -mcpu=arm946e-s -mfpu=softfpa -I lib_src --defsym CHECK_STACK=0 --defsym REVERB=0 --defsym CHORUS=0 --defsym STEREO_OUTPUT=1 --defsym SAMPLE_RATE_22050=1 --defsym SAMPLES_8_BIT=1 --defsym FILTER_ENABLED=1 $<
 
-OBJS = 75k_8b_22k_128.o eas_config.o eas_data.o eas_enhancer.o eas_enhdata.o eas_flog.o eas_hostmm.o eas_math.o eas_midi.o eas_mididata.o eas_mixbuf.o eas_mixer.o eas_pan.o eas_pcm.o eas_pcmdata.o eas_public.o eas_report.o eas_smf.o eas_smfdata.o eas_tcdata.o eas_tonecontrol.o eas_voicemgt.o eas_wtengine.o eas_wtsynth.o
+OBJS = eas_mididata.o eas_pan.o eas_wavefiledata.o eas_imelody.o eas_xmfdata.o ARM-E_interpolate_noloop_gnu.o eas_chorusdata.o ARM-E_voice_gain_gnu.o eas_ota.o eas_reverbdata.o eas_rtttl.o eas_reverb.o jet.o eas_mdls.o eas_mixbuf.o eas_smf.o eas_tcdata.o eas_chorus.o eas_pcmdata.o eas_xmf.o eas_smfdata.o eas_math.o eas_tonecontrol.o eas_rtttldata.o eas_voicemgt.o eas_public.o eas_dlssynth.o ARM-E_interpolate_loop_gnu.o ARM-E_filter_gnu.o eas_midi.o eas_otadata.o eas_flog.o eas_wtengine.o eas_imaadpcm.o eas_wtsynth.o 75k_8b_22k_128.o eas_pcm.o eas_mixer.o eas_wavefile.o eas_ima_tables.o eas_data.o ARM-E_mastergain_gnu.o eas_imelodydata.o
 
-midi.a: $(OBJS)
+arm-wt-22k.a: $(OBJS)
 	$(AR) rc lib$@ $(OBJS)
 
